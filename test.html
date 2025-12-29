@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="no-cache" />
+    <link rel="shortcut icon" href="#">
+    <title>문항 만들기 테스트</title>
+
+    <script src="nod_common/c_util.js"></script>
+    <script src="ques-maker.js"></script>
+    <script>
+        let qm = new QuestionMaker();
+        let txt;
+        console.log(qm);
+        function onLoad() {
+            txt = document.getElementById("txtResult");
+        }
+
+        function onClick(group) {
+            //console.log(group);
+            let q = qm.make(group);
+
+            txt.value += q.join("") + "\n";
+            txt.scrollTop = txt.scrollHeight;
+        }
+
+        function onClear() {
+            txt.value = "";
+        }
+    </script>
+
+</head>
+
+<body onload="onLoad()">
+
+    <input type="button" value="Group1" onclick="onClick(1)">
+    <input type="button" value="Group2" onclick="onClick(2)">
+    <input type="button" value="Group3" onclick="onClick(3)">
+    <input type="button" value="Group4" onclick="onClick(4)">
+    <input type="button" value="Group5" onclick="onClick(5)">
+    <input type="button" value="Group6" onclick="onClick(6)">
+    <input type="button" value="Group7" onclick="onClick(7)"><br>
+
+    <textarea id="txtResult" rows="20" cols="50"></textarea>
+    <input type="button" value="Clear" onclick="onClear()">
+</body>
+
+</html>
